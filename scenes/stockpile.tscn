@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://btg5l84v06dw4"]
+
+[ext_resource type="Texture2D" uid="uid://g5jkyc07683a" path="res://sprites/forest_.png" id="1_8njiw"]
+[ext_resource type="Texture2D" uid="uid://bvwyh2rfgw07" path="res://sprites/cave_ [fencesAndWalls].png" id="1_dqk3u"]
+[ext_resource type="Script" path="res://scripts/stockpile.gd" id="1_tynrr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82wpy"]
+radius = 19.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_prvva"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7rkr"]
+bg_color = Color(0.188067, 0.180255, 0.219333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgxo5"]
+bg_color = Color(0.833793, 0.499558, 0.392297, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr1p4"]
+bg_color = Color(0.188067, 0.180255, 0.219333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjn06"]
+bg_color = Color(0.257089, 0.650301, 0.809033, 1)
+
+[node name="Stockpile" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_tynrr")
+
+[node name="StockpileArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_82wpy")
+
+[node name="Collider1" type="StaticBody2D" parent="."]
+position = Vector2(-24, 6)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_prvva")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Collider2" type="StaticBody2D" parent="."]
+position = Vector2(24, 6)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider2"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_prvva")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Cave" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_8njiw")
+region_enabled = true
+region_rect = Rect2(112, 56, 32, 24)
+
+[node name="Pillar" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_dqk3u")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(80, 24, 48, 40)
+
+[node name="WoodBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 1
+offset_left = -10.0
+offset_top = -40.0
+offset_right = 10.0
+offset_bottom = -36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_u7rkr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jgxo5")
+max_value = 10.0
+step = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="OreBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+z_index = 1
+offset_left = -10.0
+offset_top = -48.0
+offset_right = 10.0
+offset_bottom = -44.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fr1p4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rjn06")
+max_value = 10.0
+step = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true

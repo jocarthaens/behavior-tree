@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ukv21wv0hms"]
+
+[ext_resource type="Script" path="res://scripts/source_boulder.gd" id="1_yugg7"]
+[ext_resource type="Texture2D" uid="uid://dlp1dtdmq38nb" path="res://sprites/interactable_objects.png" id="2_21e3b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rancm"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l82xy"]
+radius = 1.99975
+height = 3.99951
+
+[node name="BoulderOre" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_yugg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_rancm")
+
+[node name="SolidBody" type="StaticBody2D" parent="."]
+position = Vector2(0, -2)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SolidBody"]
+position = Vector2(0, 1)
+rotation = 1.55509
+shape = SubResource("CapsuleShape2D_l82xy")
+disabled = true
+
+[node name="Sprites" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -4)
+texture = ExtResource("2_21e3b")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)

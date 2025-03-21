@@ -1,0 +1,83 @@
+[gd_scene load_steps=19 format=3 uid="uid://ctteqherycu53"]
+
+[ext_resource type="Script" path="res://BehaviorTree/src/BTRoot.gd" id="1_jm0s6"]
+[ext_resource type="Script" path="res://BehaviorTree/src/BTNodes/Composite/BTSelector.gd" id="2_1r4cq"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_conditionals/can_gather.gd" id="3_mlyhh"]
+[ext_resource type="Script" path="res://BehaviorTree/src/BTNodes/Composite/BTSequence.gd" id="4_sgfpg"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/go_to_source.gd" id="5_jg738"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/chip_source.gd" id="6_alqgr"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/go_to_stockpile.gd" id="7_qitmu"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_conditionals/found_material.gd" id="7_ul02x"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_conditionals/is_carrying_material.gd" id="7_v5pa0"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/stock_material.gd" id="8_02vj6"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/get_material.gd" id="8_8lhw0"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/go_to_forge.gd" id="9_8s5ni"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_conditionals/is_tool_broken.gd" id="9_qdsl8"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/get_tool.gd" id="10_mw7n1"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/go_to_base.gd" id="11_73o56"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_conditionals/full_stock_or_no_resource.gd" id="12_jltpc"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_leaves/idle.gd" id="12_kkkmi"]
+[ext_resource type="Script" path="res://scripts/gatherer_actions/bt_conditionals/is_far_from_base.gd" id="16_c3hgr"]
+
+[node name="GathererBT" type="Node"]
+script = ExtResource("1_jm0s6")
+
+[node name="Either" type="Node" parent="."]
+script = ExtResource("2_1r4cq")
+
+[node name="FoundMaterial" type="Node" parent="Either"]
+script = ExtResource("7_ul02x")
+
+[node name="GetMaterial" type="Node" parent="Either/FoundMaterial"]
+script = ExtResource("8_8lhw0")
+
+[node name="IsCarryingMaterial" type="Node" parent="Either"]
+script = ExtResource("7_v5pa0")
+
+[node name="BringToStockpile" type="Node" parent="Either/IsCarryingMaterial"]
+script = ExtResource("4_sgfpg")
+
+[node name="GoToStockpile" type="Node" parent="Either/IsCarryingMaterial/BringToStockpile"]
+script = ExtResource("7_qitmu")
+
+[node name="StockMaterial" type="Node" parent="Either/IsCarryingMaterial/BringToStockpile"]
+script = ExtResource("8_02vj6")
+
+[node name="CanGather" type="Node" parent="Either"]
+script = ExtResource("3_mlyhh")
+
+[node name="GatherResource" type="Node" parent="Either/CanGather"]
+script = ExtResource("4_sgfpg")
+
+[node name="GoToSource" type="Node" parent="Either/CanGather/GatherResource"]
+script = ExtResource("5_jg738")
+
+[node name="ChipSource" type="Node" parent="Either/CanGather/GatherResource"]
+script = ExtResource("6_alqgr")
+
+[node name="IsToolBroken" type="Node" parent="Either"]
+script = ExtResource("9_qdsl8")
+
+[node name="RepairTool" type="Node" parent="Either/IsToolBroken"]
+script = ExtResource("4_sgfpg")
+
+[node name="GoToForge" type="Node" parent="Either/IsToolBroken/RepairTool"]
+script = ExtResource("9_8s5ni")
+
+[node name="GetTool" type="Node" parent="Either/IsToolBroken/RepairTool"]
+script = ExtResource("10_mw7n1")
+
+[node name="FullStockOrNoResource" type="Node" parent="Either"]
+script = ExtResource("12_jltpc")
+
+[node name="Standby" type="Node" parent="Either/FullStockOrNoResource"]
+script = ExtResource("2_1r4cq")
+
+[node name="FarFromBase" type="Node" parent="Either/FullStockOrNoResource/Standby"]
+script = ExtResource("16_c3hgr")
+
+[node name="GoToBase" type="Node" parent="Either/FullStockOrNoResource/Standby/FarFromBase"]
+script = ExtResource("11_73o56")
+
+[node name="Idle" type="Node" parent="Either/FullStockOrNoResource/Standby"]
+script = ExtResource("12_kkkmi")

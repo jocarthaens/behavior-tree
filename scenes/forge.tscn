@@ -1,0 +1,408 @@
+[gd_scene load_steps=12 format=3 uid="uid://dg8k8k2nur4bv"]
+
+[ext_resource type="Texture2D" uid="uid://bvwyh2rfgw07" path="res://sprites/cave_ [fencesAndWalls].png" id="1_4dquv"]
+[ext_resource type="Script" path="res://scripts/forge.gd" id="1_ah4wj"]
+[ext_resource type="Texture2D" uid="uid://cs4k233a46xvk" path="res://sprites/goblin_.png" id="3_68hr3"]
+[ext_resource type="Texture2D" uid="uid://dlp1dtdmq38nb" path="res://sprites/interactable_objects.png" id="4_xemuo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82wpy"]
+radius = 16.0
+height = 64.0001
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_prvva"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pok2u"]
+radius = 4.86084
+height = 11.7543
+
+[sub_resource type="Animation" id="Animation_kkxp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorkerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tool:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.523599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tool:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorkerSprites:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tool/ToolSprite:flip_v")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tool/ToolSprite:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.785398]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tool:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_r61df"]
+resource_name = "melee_right"
+length = 0.6667
+step = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorkerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0680988, 0.141133, 0.5001, 0.601311),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tool:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0707767, 0.142941, 0.41217, 0.514866, 0.609246),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(3, -1), Vector2(2, 0), Vector2(1, 1), Vector2(1, 1), Vector2(2, 0), Vector2(3, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tool:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0713164, 0.14467, 0.271213, 0.516077, 0.609895),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.309, -0.523599, -1.5708, -1.5708, -0.523599, 0.608953]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorkerSprites:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tool/ToolSprite:flip_v")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tool/ToolSprite:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.35619]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tool:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5vdan"]
+resource_name = "melee_right"
+length = 0.6667
+step = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorkerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0680988, 0.141133, 0.5001, 0.601311),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tool:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0669037, 0.143691, 0.262293, 0.497976, 0.599058),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-3, -1), Vector2(-2, 0), Vector2(-1, 1), Vector2(-1, 1), Vector2(-2, 0), Vector2(-3, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tool:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0855797, 0.141687, 0.369699, 0.498366, 0.598209),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.309, 0.785398, 1.5708, 1.5708, 0.785398, -0.58237]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WorkerSprites:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tool/ToolSprite:flip_v")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tool/ToolSprite:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-0.785398]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tool:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvxbw"]
+_data = {
+"RESET": SubResource("Animation_kkxp2"),
+"melee_left": SubResource("Animation_r61df"),
+"melee_right": SubResource("Animation_5vdan")
+}
+
+[node name="Forge" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ah4wj")
+
+[node name="ForgeArea" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_82wpy")
+
+[node name="Collider1" type="StaticBody2D" parent="."]
+position = Vector2(-35, 8)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_prvva")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Collider2" type="StaticBody2D" parent="."]
+position = Vector2(36, 8)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider2"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_prvva")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Arch" type="Sprite2D" parent="."]
+self_modulate = Color(0.360458, 0.252595, 0.33244, 1)
+position = Vector2(-27, -11)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4dquv")
+region_enabled = true
+region_rect = Rect2(128, 120, 24, 40)
+
+[node name="Arch2" type="Sprite2D" parent="."]
+self_modulate = Color(0.360458, 0.252595, 0.33244, 1)
+position = Vector2(27, -11)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4dquv")
+region_enabled = true
+region_rect = Rect2(152, 120, 24, 40)
+
+[node name="TopArches" type="Node2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="TopArch" type="Sprite2D" parent="TopArches"]
+self_modulate = Color(0.360458, 0.252595, 0.33244, 1)
+position = Vector2(-9, -22)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4dquv")
+region_enabled = true
+region_rect = Rect2(144, 120, 16, 16)
+
+[node name="TopArch2" type="Sprite2D" parent="TopArches"]
+self_modulate = Color(0.360458, 0.252595, 0.33244, 1)
+position = Vector2(9, -22)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4dquv")
+region_enabled = true
+region_rect = Rect2(144, 120, 16, 16)
+
+[node name="Anvil" type="Sprite2D" parent="."]
+self_modulate = Color(0.878215, 0.657983, 0.449056, 1)
+position = Vector2(5, 6)
+texture = ExtResource("1_4dquv")
+region_enabled = true
+region_rect = Rect2(48, 112, 16, 16)
+
+[node name="Sign" type="Sprite2D" parent="."]
+self_modulate = Color(0.878215, 0.657983, 0.449056, 1)
+position = Vector2(16, -9)
+texture = ExtResource("1_4dquv")
+region_enabled = true
+region_rect = Rect2(128, 56, 16, 24)
+
+[node name="Smith" type="Node2D" parent="."]
+position = Vector2(-8, 2)
+
+[node name="WorkerSprites" type="Sprite2D" parent="Smith"]
+unique_name_in_owner = true
+self_modulate = Color(0.499709, 0.376055, 0.46059, 1)
+position = Vector2(0, -7)
+texture = ExtResource("3_68hr3")
+hframes = 8
+vframes = 6
+metadata/_edit_lock_ = true
+
+[node name="Tool" type="Area2D" parent="Smith"]
+position = Vector2(-3, -1)
+rotation = -0.523599
+collision_layer = 2
+collision_mask = 12
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Smith/Tool"]
+position = Vector2(-0.0820111, -9.99966)
+shape = SubResource("CapsuleShape2D_pok2u")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="ToolSprite" type="Sprite2D" parent="Smith/Tool"]
+position = Vector2(0.313709, -7.68629)
+rotation = -0.785398
+texture = ExtResource("4_xemuo")
+region_enabled = true
+region_rect = Rect2(112, 32, 16, 16)
+metadata/_edit_lock_ = true
+
+[node name="Animation" type="AnimationPlayer" parent="Smith"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_rvxbw")
+}

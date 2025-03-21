@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6koshb3xyg62"]
+
+[ext_resource type="Texture2D" uid="uid://3bfncyt17hwx" path="res://sprites/cave_ [resources].png" id="1_h3csx"]
+[ext_resource type="Script" path="res://scripts/decor_shroom.gd" id="2_5xt1e"]
+
+[node name="OranShroom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="OranShroom" type="Sprite2D" parent="."]
+position = Vector2(2, -2)
+texture = ExtResource("1_h3csx")
+hframes = 2
+vframes = 2
+region_enabled = true
+region_rect = Rect2(144, 16, 32, 32)
+script = ExtResource("2_5xt1e")
