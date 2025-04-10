@@ -27,8 +27,7 @@ __Types of BTDecorators__:
 * __BTTimer__ -> Regardless on the chosen timer mode, this node ticks its timer to its finishing time before running its child node's full_tick() method.
 
 __BTUtilityScorers__:
--> Only BTLeaves can use BTUtilityScorers to set their utility scores. Other BTNodes will depend on BTLeaves to calculate their utility scores.
--> This scorer is works similarly to Utility AI's scoring system where they either formulate their utility score from their sources, or combine the scores of its children utility scorers to create its own.
+-> Only BTLeaves can use BTUtilityScorers to set their utility scores. Other BTNodes will depend on BTLeaves to calculate their utility scores. This scorer works similarly to Utility AI's scoring system where they either formulate their utility score from their sources, or combine the scores of its children utility scorers to create its own, depending on the type of scorer. This class also provides a method for obtaining and setting its utility score.
 
 __BTScorer Types__:
 * __BTAggregator__ -> extends from BTUtilityScorer, aggregates scores from its children of UTILScorers.
