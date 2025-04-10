@@ -38,5 +38,5 @@ __BTScorer Types__:
 Included in this framework is a demo about goblins that gathers resources to fill their stockpile area to its max capacity by mining ores and chopping wood. After gathering, they bring these resources to their stockpile. If their tool is broken, they will go to the forge area to get a new one. If their stockpile is full, they would stand idle either in their camp, or if carrying a resource, near the stockpile until restocking is possible. Their current actions are displayed above them.
 
 ---
-![behave4 (online-video-cutter com)(1)](https://github.com/user-attachments/assets/098b8ef9-b166-43d7-b875-a056ecdebddf)
+![behave4 (online-video-cutter com)(2)](https://github.com/user-attachments/assets/c016b13b-02d9-4a05-ad75-58a575df32d2)
 ---
